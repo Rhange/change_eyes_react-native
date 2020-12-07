@@ -2,9 +2,36 @@ import axios from "axios";
 import { Alert } from "react-native";
 import { SERVER_IP, SERVER_PORT } from "./apiAddress";
 
-const URL = `http://${SERVER_IP}:${SERVER_PORT}//let_me_shine`;
+const URL = `http://${SERVER_IP}:${SERVER_PORT}/let_me_shine`;
 
-let Result = [];
+let tempResult = [];
+
+const getResults = (imgObj) => {
+	console.log("[3] Image Transfer Start!");
+
+	const origin = `data:image/png;base64,${imgObj.imgID_1}`;
+	const after = `data:image/png;base64,${imgObj.imgID_2}`;
+
+	console.log("[3] Image Transfer Complete!");
+	tempResult = [origin, after];
+};
+
+const getResultURL = async (url) => {
+	try {
+		console.log("[2] Get Start!");
+
+		await axios
+			.get(url) // get으로 해당 url에 접근
+			.then((res) => getResults(res.data.results))
+			// 모델에서 계산이 완료된 결과 사진(base64 형태로 되어 있음)과 영상(mp4)을
+			// getResults 함수로 보낸다.
+			.catch((err) => console.log(`Get axios error: ${err}`));
+
+		console.log("[2] Get End!");
+	} catch (e) {
+		console.log(`getResultURL Error: ${e}`);
+	}
+};
 
 export const imageTransfer = async (firstPhoto, secondPhoto, sex) => {
 	try {
@@ -28,16 +55,7 @@ export const imageTransfer = async (firstPhoto, secondPhoto, sex) => {
 				},
 				config
 			) // 해당 URL로 POST
-			.then((res) => {
-				const {
-					data: {
-						results: { imgID_1, imgID_2 },
-					},
-				} = res;
-				const origin = `data:image/png;base64,${imgID_1}`;
-				const after = `data:image/png;base64,${imgID_2}`;
-				Result = [origin, after];
-			})
+			.then((res) => getResultURL(res.data))
 			// POST의 결과(res)로부터 모델 결과 위치(res.data) 얻음
 			// 이를 getResultURL 함수로 보낸다.
 			.catch((err) => {
@@ -52,6 +70,11 @@ export const imageTransfer = async (firstPhoto, secondPhoto, sex) => {
 	} catch (e) {
 		console.log(`imageTransfer Error: ${e}`);
 	} finally {
-		return Result;
+		const result = tempResult;
+		if (result.length === 2) {
+			return result;
+		} else {
+			return false;
+		}
 	}
 };
