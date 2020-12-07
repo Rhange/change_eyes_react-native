@@ -1,39 +1,28 @@
-import { useEffect, useState } from "react";
-import * as ImagePicker from "expo-image-picker";
+import { useState } from "react";
 
 export const useGetPhotoState = () => {
-  const [imageSelected, setImageSelected] = useState(false);
-  const [hasAlbumPermission, setHasAlbumPermission] = useState(false);
-  const [albumPhoto, setAlbumPhoto] = useState({});
+	const [imageSelected, setImageSelected] = useState(false);
+	const [albumPhoto, setAlbumPhoto] = useState({});
 
-  useEffect(() => {
-    (async () => {
-      const {
-        status: albumStatus
-      } = await ImagePicker.requestCameraRollPermissionsAsync();
-      setHasAlbumPermission(albumStatus === "granted");
-    })();
-  }, []);
+	return {
+		imageSelected,
+		setImageSelected,
+		onPressGetPhoto: async () => {
+			const photo = await ImagePicker.launchImageLibraryAsync({
+				allowsEditing: false,
+				quality: 1,
+				base64: true,
+			});
 
-  return {
-    imageSelected,
-    setImageSelected,
-    onPressGetPhoto: async () => {
-      const photo = await ImagePicker.launchImageLibraryAsync({
-        allowsEditing: false,
-        quality: 1,
-        base64: true
-      });
-
-      if (photo.uri) {
-        setImageSelected(true);
-        setAlbumPhoto({
-          uri: photo.uri,
-          base64: photo.base64
-        });
-      }
-    },
-    albumPhoto,
-    setAlbumPhoto
-  };
+			if (photo.uri) {
+				setImageSelected(true);
+				setAlbumPhoto({
+					uri: photo.uri,
+					base64: photo.base64,
+				});
+			}
+		},
+		albumPhoto,
+		setAlbumPhoto,
+	};
 };

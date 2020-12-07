@@ -10,7 +10,10 @@ import {
 import styled from "styled-components";
 
 import { Camera } from "expo-camera";
+import * as Permissions from "expo-permissions";
+import * as ImagePicker from "expo-image-picker";
 import * as MediaLibrary from "expo-media-library";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import * as FileSystem from "expo-file-system";
 import * as Sharing from "expo-sharing";
 
@@ -103,6 +106,8 @@ let resultPhotoList = [];
 
 export default function App() {
 	// useState
+	const [hasPermission, setHasPermission] = useState(null);
+	const [hasAlbumPermission, setHasAlbumPermission] = useState(false);
 	const [isLoading, setIsLoading] = useState(false);
 	const [isAfterView, setIsAfterView] = useState(false);
 
@@ -124,7 +129,6 @@ export default function App() {
 		onToggleGender,
 	} = useGenderState();
 	const {
-		hasPermission,
 		cameraRef,
 		isPreview,
 		setIsPreview,
@@ -140,7 +144,12 @@ export default function App() {
 		setAlbumPhoto,
 	} = useGetPhotoState();
 	const { cameraType, switchCameraType } = useCameraTypeState();
-	const { isNotice, clickCancelNotice, clickNeverNotice } = useNoticeState();
+	const {
+		isNotice,
+		setIsNotice,
+		clickCancelNotice,
+		clickNeverNotice,
+	} = useNoticeState();
 	const {
 		firstLightColor,
 		firstLightText,
@@ -148,6 +157,27 @@ export default function App() {
 		secondLightText,
 		LightDefaultColor,
 	} = useLightState();
+
+	// useEffect
+	useEffect(() => {
+		(async () => {
+			// Camera 권한 체크
+			const { status } = await Permissions.askAsync(Permissions.CAMERA);
+			setHasPermission(status == "granted");
+
+			// Album 권한 체크
+			const {
+				status: albumStatus,
+			} = await ImagePicker.requestCameraRollPermissionsAsync();
+			setHasAlbumPermission(albumStatus === "granted");
+
+			// 안내문 다시보지 않기 체크
+			const noticeStatus = await AsyncStorage.getItem("Notice");
+			noticeStatus !== null
+				? setIsNotice(JSON.parse(noticeStatus))
+				: false;
+		})();
+	}, []);
 
 	console.log(
 		`isTwoPeople: ${isTwoPeople}, twoPeopleToggle: ${twoPeopleToggleValue}, genderValue: ${genderValue}, isGender: ${isGender}`
@@ -318,7 +348,7 @@ export default function App() {
 								: {
 										alignItems: "center",
 										width: width,
-										height: width / 0.65,
+										height: width / 0.7,
 										marginTop: 0,
 								  }
 						}
