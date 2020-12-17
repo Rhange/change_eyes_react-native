@@ -9,7 +9,7 @@ const TwoPeopleBtn = memo((props) => (
     onToggle={props.onToggle}
     thumbActiveComponent={
       <Image
-        source={require('../../../images/twoPeopleImages/two_people.png')}
+        source={require('../../../assets/images/two_people.png')}
         style={{
           width: '100%',
           height: '100%',
@@ -19,7 +19,7 @@ const TwoPeopleBtn = memo((props) => (
     }
     thumbInActiveComponent={
       <Image
-        source={require('../../../images/twoPeopleImages/one_person.png')}
+        source={require('../../../assets/images/one_person.png')}
         style={{
           width: '100%',
           height: '100%',

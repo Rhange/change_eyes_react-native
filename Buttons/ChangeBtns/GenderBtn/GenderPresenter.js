@@ -9,7 +9,7 @@ const GenderBtn = memo((props) => (
     onToggle={props.onToggle}
     thumbActiveComponent={
       <Image
-        source={require('../../../images/genderImages/man.png')}
+        source={require('../../../assets/images/man.png')}
         style={{
           width: '100%',
           height: '100%',
@@ -19,7 +19,7 @@ const GenderBtn = memo((props) => (
     }
     thumbInActiveComponent={
       <Image
-        source={require('../../../images/genderImages/woman.png')}
+        source={require('../../../assets/images/woman.png')}
         style={{
           width: '100%',
           height: '100%',
