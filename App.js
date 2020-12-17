@@ -12,40 +12,40 @@ import * as Sharing from 'expo-sharing';
 
 import { imageTransfer } from './API/api';
 
-import ProgressBarMain from './Screen/ProgressBar/progressBarMain';
-import FaceLine from './Screen/FaceLine';
+import ProgressBarMain from './components/ProgressBar/progressBarMain';
+import FaceLine from './screens/FaceLine';
 
-import TwoPeopleBtn from './Buttons/ChangeBtns/TwoPeopleBtn/TwoPeoplePresenter';
-import { useTwoPeopleState } from './Buttons/ChangeBtns/TwoPeopleBtn/TwoPeopleContainer';
+import TwoPeopleBtn from './components/Buttons/ChangeBtns/TwoPeopleBtn/TwoPeoplePresenter';
+import { useTwoPeopleState } from './components/Buttons/ChangeBtns/TwoPeopleBtn/TwoPeopleContainer';
 
-import GenderBtn from './Buttons/ChangeBtns/GenderBtn/GenderPresenter';
-import { useGenderState } from './Buttons/ChangeBtns/GenderBtn/GenderContainer';
+import GenderBtn from './components/Buttons/ChangeBtns/GenderBtn/GenderPresenter';
+import { useGenderState } from './components/Buttons/ChangeBtns/GenderBtn/GenderContainer';
 
-import TakePhotoBtn from './Buttons/MainScreenBtns/TakePhotoBtn/TakePhotoPresenter';
-import { useTakePhotoState } from './Buttons/MainScreenBtns/TakePhotoBtn/TakePhotoContainer';
+import TakePhotoBtn from './components/Buttons/MainScreenBtns/TakePhotoBtn/TakePhotoPresenter';
+import { useTakePhotoState } from './components/Buttons/MainScreenBtns/TakePhotoBtn/TakePhotoContainer';
 
-import SwitchCameraBtn from './Buttons/MainScreenBtns/SwitchCameraBtn/SwitchCameraPresenter';
-import { useCameraTypeState } from './Buttons/MainScreenBtns/SwitchCameraBtn/SwitchCameraContainer';
+import SwitchCameraBtn from './components/Buttons/MainScreenBtns/SwitchCameraBtn/SwitchCameraPresenter';
+import { useCameraTypeState } from './components/Buttons/MainScreenBtns/SwitchCameraBtn/SwitchCameraContainer';
 
-import GetPhotoBtn from './Buttons/MainScreenBtns/GetPhotoBtn/GetPhotoPresenter';
-import { useGetPhotoState } from './Buttons/MainScreenBtns/GetPhotoBtn/GetPhotoContainer';
+import GetPhotoBtn from './components/Buttons/MainScreenBtns/GetPhotoBtn/GetPhotoPresenter';
+import { useGetPhotoState } from './components/Buttons/MainScreenBtns/GetPhotoBtn/GetPhotoContainer';
 
-import TransferBtn from './Buttons/TransferCancelBtns/TransferBtn/TransferPresenter';
-import NextBtn from './Buttons/ChangeBtns/NextBtn/NextPresenter';
-import CancelBtn from './Buttons/TransferCancelBtns/CancelBtn/CancelPresenter';
+import TransferBtn from './components/Buttons/TransferCancelBtns/TransferBtn/TransferPresenter';
+import NextBtn from './components/Buttons/ChangeBtns/NextBtn/NextPresenter';
+import CancelBtn from './components/Buttons/TransferCancelBtns/CancelBtn/CancelPresenter';
 
-import SaveBtn from './Buttons/SaveShareBtns/SaveBtn/SavePresenter';
-import ShareBtn from './Buttons/SaveShareBtns/ShareBtn/SharePresenter';
+import SaveBtn from './components/Buttons/SaveShareBtns/SaveBtn/SavePresenter';
+import ShareBtn from './components/Buttons/SaveShareBtns/ShareBtn/SharePresenter';
 
-import NoticeCancelBtn from './Buttons/MainScreenBtns/NoticeBtns/NoticeCancelBtn/NoticeCancelPresenter';
-import NoticeNeverBtn from './Buttons/MainScreenBtns/NoticeBtns/NoticeNeverBtn/NoticeNeverPresenter';
-import { useNoticeState } from './Buttons/MainScreenBtns/NoticeBtns/NoticeContainer';
+import NoticeCancelBtn from './components/Buttons/MainScreenBtns/NoticeBtns/NoticeCancelBtn/NoticeCancelPresenter';
+import NoticeNeverBtn from './components/Buttons/MainScreenBtns/NoticeBtns/NoticeNeverBtn/NoticeNeverPresenter';
+import { useNoticeState } from './components/Buttons/MainScreenBtns/NoticeBtns/NoticeContainer';
 
-import OnePersonPopup from './Buttons/PopupBtns/OnePersonPopup';
-import TwoPeopleMainPopup from './Buttons/PopupBtns/TwoPeoplePopup';
+import OnePersonPopup from './components/Buttons/PopupBtns/OnePersonPopup';
+import TwoPeopleMainPopup from './components/Buttons/PopupBtns/TwoPeoplePopup';
 
-import OrderLight from './Buttons/PopupBtns/TwoPeopleLights/TwoPeopleLightsPresenter';
-import { useLightState } from './Buttons/PopupBtns/TwoPeopleLights/TwoPeopleLightsContainer';
+import OrderLight from './components/Buttons/PopupBtns/TwoPeopleLights/TwoPeopleLightsPresenter';
+import { useLightState } from './components/Buttons/PopupBtns/TwoPeopleLights/TwoPeopleLightsContainer';
 
 const { width, height } = Dimensions.get('window');
 const MainContainer = styled.View`

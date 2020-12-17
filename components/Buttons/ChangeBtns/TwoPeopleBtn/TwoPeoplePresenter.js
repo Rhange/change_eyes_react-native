@@ -1,15 +1,15 @@
 import React, { memo } from 'react';
-import { Image } from 'react-native';
 import ToggleButton from 'react-native-toggle-element';
+import { Image } from 'react-native';
 
-const GenderBtn = memo((props) => (
+const TwoPeopleBtn = memo((props) => (
   <ToggleButton
     onPress={props.onPress}
     value={props.value}
     onToggle={props.onToggle}
     thumbActiveComponent={
       <Image
-        source={require('../../../assets/images/man.png')}
+        source={require('../../../../assets/images/two_people.png')}
         style={{
           width: '100%',
           height: '100%',
@@ -19,7 +19,7 @@ const GenderBtn = memo((props) => (
     }
     thumbInActiveComponent={
       <Image
-        source={require('../../../assets/images/woman.png')}
+        source={require('../../../../assets/images/one_person.png')}
         style={{
           width: '100%',
           height: '100%',
@@ -28,8 +28,8 @@ const GenderBtn = memo((props) => (
       />
     }
     thumbButton={{
-      width: 50,
-      height: 50,
+      width: 100,
+      height: 100,
       radius: 0,
     }}
     trackBar={{
@@ -37,13 +37,13 @@ const GenderBtn = memo((props) => (
       inActiveBackgroundColor: 'transparent',
       borderActiveColor: 'white',
       borderInActiveColor: 'white',
-      width: 50,
-      height: 50,
+      width: 100,
+      height: 100,
     }}
     trackBarStyle={{
       opacity: 0.9,
     }}
-  />
+  ></ToggleButton>
 ));
 
-export default GenderBtn;
+export default TwoPeopleBtn;

@@ -42,14 +42,14 @@ const onePopup = () => {
             </Text>
             <TipContainer>
               <Image
-                source={require('../../assets/images/woman.png')}
+                source={require('../../../assets/images/woman.png')}
                 style={{
                   width: 40,
                   height: 40,
                 }}
               />
               <Image
-                source={require('../../assets/images/man.png')}
+                source={require('../../../assets/images/man.png')}
                 style={{
                   width: 40,
                   height: 40,
