@@ -1,6 +1,6 @@
-import React, { memo } from "react";
-import { TouchableOpacity } from "react-native";
-import { FontAwesome } from "@expo/vector-icons";
+import React, { memo } from 'react';
+import { TouchableOpacity } from 'react-native';
+import { FontAwesome } from '@expo/vector-icons';
 
 const SaveBtn = memo((props) => (
   <TouchableOpacity onPress={props.onPress}>

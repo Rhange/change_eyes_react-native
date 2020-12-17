@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 import {
   Text,
   View,
@@ -7,9 +7,9 @@ import {
   StyleSheet,
   Dimensions,
   Alert,
-  Image
-} from "react-native";
-import styled from "styled-components";
+  Image,
+} from 'react-native';
+import styled from 'styled-components';
 
 const TipContainer = styled.View`
   flex-direction: row;
@@ -19,8 +19,8 @@ const TipContainer = styled.View`
   margin-bottom: 3%;
 `;
 
-const deviceWidth = Dimensions.get("window").width;
-const deviceHeight = Dimensions.get("window").height;
+const deviceWidth = Dimensions.get('window').width;
+const deviceHeight = Dimensions.get('window').height;
 
 const onePopup = () => {
   const [modalVisible, setModalVisible] = useState(false);
@@ -32,8 +32,9 @@ const onePopup = () => {
         transparent={true}
         visible={modalVisible}
         onRequestClose={() => {
-          Alert.alert("Modal has been closed.");
-        }}>
+          Alert.alert('Modal has been closed.');
+        }}
+      >
         <View style={styles.centeredView}>
           <View style={styles.modalView}>
             <Text style={styles.modalText}>
@@ -41,17 +42,17 @@ const onePopup = () => {
             </Text>
             <TipContainer>
               <Image
-                source={require("../../images/genderImages/woman.png")}
+                source={require('../../images/genderImages/woman.png')}
                 style={{
                   width: 40,
-                  height: 40
+                  height: 40,
                 }}
               />
               <Image
-                source={require("../../images/genderImages/man.png")}
+                source={require('../../images/genderImages/man.png')}
                 style={{
                   width: 40,
-                  height: 40
+                  height: 40,
                 }}
               />
             </TipContainer>
@@ -59,11 +60,12 @@ const onePopup = () => {
             <TouchableHighlight
               style={{
                 ...styles.openButton,
-                backgroundColor: "#f7eeb0"
+                backgroundColor: '#f7eeb0',
               }}
               onPress={() => {
                 setModalVisible(false);
-              }}>
+              }}
+            >
               <Text style={styles.textStyle}>닫기</Text>
             </TouchableHighlight>
           </View>
@@ -73,7 +75,8 @@ const onePopup = () => {
         style={styles.openButton}
         onPress={() => {
           setModalVisible(true);
-        }}>
+        }}
+      >
         <Text style={styles.textStyle}>Tip!</Text>
       </TouchableHighlight>
     </View>
@@ -83,50 +86,50 @@ const onePopup = () => {
 const styles = StyleSheet.create({
   centeredView: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    marginTop: 22
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: 22,
   },
   LeftView: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
+    justifyContent: 'center',
+    alignItems: 'center',
     top: deviceHeight / 2.39,
     left: deviceWidth / 25,
-    position: "absolute"
+    position: 'absolute',
   },
   modalView: {
     margin: 20,
-    backgroundColor: "white",
+    backgroundColor: 'white',
     borderRadius: 20,
     padding: 35,
-    alignItems: "center",
-    shadowColor: "transparent",
+    alignItems: 'center',
+    shadowColor: 'transparent',
     shadowOffset: {
       width: 0,
-      height: 2
+      height: 2,
     },
     shadowOpacity: 0.25,
     shadowRadius: 3.84,
-    elevation: 5
+    elevation: 5,
   },
   openButton: {
-    backgroundColor: "#b9d3ed",
+    backgroundColor: '#b9d3ed',
     borderRadius: 20,
     padding: 10,
-    elevation: 2
+    elevation: 2,
   },
   closeButton: {},
   textStyle: {
-    color: "black",
-    fontWeight: "bold",
-    textAlign: "justify"
+    color: 'black',
+    fontWeight: 'bold',
+    textAlign: 'justify',
   },
   modalText: {
     marginBottom: 15,
-    textAlign: "center",
-    lineHeight: 25
-  }
+    textAlign: 'center',
+    lineHeight: 25,
+  },
 });
 
 export default onePopup;

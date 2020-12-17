@@ -1,9 +1,7 @@
-import { useState } from "react";
-import { Camera } from "expo-camera";
+import { useState } from 'react';
+import { Camera } from 'expo-camera';
 
-export const useCameraTypeState = (
-  initialState = Camera.Constants.Type.front
-) => {
+export const useCameraTypeState = (initialState = Camera.Constants.Type.front) => {
   const [cameraType, setCameraType] = useState(initialState);
 
   return {
@@ -13,6 +11,6 @@ export const useCameraTypeState = (
         cameraType === Camera.Constants.Type.front
           ? Camera.Constants.Type.back
           : Camera.Constants.Type.front
-      )
+      ),
   };
 };

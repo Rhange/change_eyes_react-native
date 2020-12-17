@@ -11,10 +11,7 @@ export default function ProgressLoading() {
 
   return isReady ? (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Image
-        source={require('../../assets/images/again.gif')}
-        onLoad={this._cacheResourcesAsync}
-      />
+      <Image source={require('../../assets/images/again.gif')} onLoad={this._cacheResourcesAsync} />
     </View>
   ) : (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
